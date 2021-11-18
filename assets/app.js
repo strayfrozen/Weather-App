@@ -1,4 +1,14 @@
-console.log("hello");
+var city= "";
+
+console.log('hello');
+
+
+var apiUrl = fetch('api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ed04415a7bc100f9bfce31982e8ec5ed')
+
+    .then(response => response.json())
+    .then(data => console.log(data))
+
+    .catch(err => alert('Wrong city name'))
 
 
 
