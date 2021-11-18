@@ -11,23 +11,32 @@
     <title>Weather-App</title>
   </head>
   <body>
+
+	  <!--This is header-->
 	<header class=“background-image: var(.bg-primary.bg-gradient)>
 		<h1 class="p-3 mb-2 bg-primary text-white d-flex  justify-content-center">Weather Dashboard</h1>
 	</header>
-	<main class=“m-3 flex”>
+
+	<main >
 		<aside class=“w-52 flex-none”>
+			
+			<!--This is Search field section-->
 			<h2 class=“font-bold text-lg”>Search for a City</h2>
-			<form>
-				<input class=“border border-2 rounded p-1 px-2 w-full” placeholder=“Type-a-city” type=“text”>
-				<a id=“searchBtn” class=“block w-full bg-blue-400 p-1 text-center  href=“#”>Search</a>
+			<form >
+				<input class=" ms-1 border border-2 rounded p-1 px-2 w-full" placeholder=“Type-a-city” type="text">
+				<button type="button" class="btn btn-primary block md" >Search</button>
 			</form>
-			<hr >
+
+			<!--This will be citys that pop up once submited -->
 			<div id=“searches”></div>
-			<!-- <a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>BTC</a>
-			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>ETH</a>
-			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>XPR</a>
-			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>ADA</a> -->
+			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Memphis</a>
+			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Nashville</a>
+			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Atlanta</a>
+			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Chatanooga</a> 
 		</aside>
+
+
+		<!--City display -->
 		<section class=“ml-2 flex-1 flex  border-1 border-gray-500>
 			<div class=“m-2 text-xl”>
 				<h3 id=“name” class=“font-semibold”>City: </h3>
@@ -37,6 +46,15 @@
 			<div class=>
 			</div>
 		</section>
+
+		<!--Five day forecast-->
+		<div class="container">
+			<section class="row">
+				<div class="col align-self-end">
+					<h3>Five day Forcast</h3>
+				</div>
+			</section>
+		</div>
 	</main>
 
 	<script src="assets\app.js"></script>

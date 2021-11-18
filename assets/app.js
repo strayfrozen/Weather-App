@@ -2,14 +2,31 @@ var city= "";
 
 console.log('hello');
 
+var getWeather = function(){ 
 
-var apiUrl = fetch('api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ed04415a7bc100f9bfce31982e8ec5ed')
+    fetch('https://api.weather.gov/points/39.7456,-97.0892').then(function(response) {
+  response.json().then(function(data) {
+    console.log(data);
+  });
+});
 
+ };
+
+
+getWeather(); 
+
+/*var apiUrl = getWeather({
+
+    fetch('api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ed04415a7bc100f9bfce31982e8ec5ed')
     .then(response => response.json())
     .then(data => console.log(data))
 
     .catch(err => alert('Wrong city name'))
 
+})
+
+
+getWeather();*/
 
 
 
