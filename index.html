@@ -18,13 +18,13 @@
 	</header>
 
 	<main >
-		<aside class=“w-52 flex-none”>
+		<aside >
 			
 			<!--This is Search field section-->
 			<h2 class=“font-bold text-lg”>Search for a City</h2>
 			<form >
-				<input class=" ms-1 border border-2 rounded p-1 px-2 w-full" placeholder=“Type-a-city” type="text">
-				<button type="button" class="btn btn-primary block md" >Search</button>
+				<input class="input-city ms-1 border border-2 rounded p-1 px-2 w-full" placeholder=“Type-a-city” type="text">
+				<button type="button" class="btn btn-primary block md search-btn" >Search</button>
 			</form>
 
 			<!--This will be citys that pop up once submited -->
@@ -35,28 +35,35 @@
 			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Chatanooga</a> 
 		</aside>
 
+		<!-- elementtag#idname -->
+		<!-- elementtag.classname -->
 
 		<!--City display -->
-		<section class=“ml-2 flex-1 flex  border-1 border-gray-500>
-			<div class=“m-2 text-xl”>
-				<h3 id=“name” class=“font-semibold”>City: </h3>
-				<p >Humidity: </p>
-				<p >Uv index: </p>
+		<section class="container text-center">
+			<div class="m-2 text-xl">
+				<h3 id="name" class=“font-semibold”>City: </h3>
+				<p id="temp">Temp</p>
+				<p id='humidity'>Humidity: </p>
+				<p id="wind">Wind: </p>
+				<p id="uvIndex">Uv index: </p>
 			</div>
 			<div class=>
 			</div>
 		</section>
 
 		<!--Five day forecast-->
-		<div class="container">
+		<div class="container text-center">
 			<section class="row">
 				<div class="col align-self-end">
 					<h3>Five day Forcast</h3>
 				</div>
+				<div class="container five-day-container">
+
+				</div>
 			</section>
 		</div>
 	</main>
-
-	<script src="assets\app.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="assets/app.js"></script>
 </body>
 </html>

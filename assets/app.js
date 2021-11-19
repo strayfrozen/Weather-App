@@ -1,8 +1,4 @@
-var city= "";
-
-console.log('hello');
-
-var getWeather = function(){ 
+/*var getWeather = function(){ 
 
     fetch('https://api.weather.gov/points/39.7456,-97.0892').then(function(response) {
   response.json().then(function(data) {
@@ -10,23 +6,62 @@ var getWeather = function(){
   });
 });
 
- };
+ };*/
 
 
-getWeather(); 
+//getWeather(); 
 
-/*var apiUrl = getWeather({
+// var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={apiKey}'
 
-    fetch('api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ed04415a7bc100f9bfce31982e8ec5ed')
-    .then(response => response.json())
-    .then(data => console.log(data))
+var startBtn = $('.search-btn')
+var APIKey = 'ed04415a7bc100f9bfce31982e8ec5ed'
+var fiveDayContainer = $('.five-day-container')
 
-    .catch(err => alert('Wrong city name'))
+startBtn.on('click', function () {
+  var city = $('.input-city').val()
+  getWeather(city)
+  getFiveDay(city)
+  console.log(city);
 
+// save the searched city to local storage
 })
 
+function getWeather(city) {
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid='+ APIKey + '&units=imperial')
+    .then((response) => response.json())
+    .then(data => {
+      console.log('current-day', data)
+      $('#name').text("City: " + data.name)
+      // add the rest of data for current
+    })
+    .catch(err => alert('Wrong city name'))
+}
 
-getWeather();*/
+function getFiveDay(city) {
+  fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey + '&units=imperial')
+    .then((response) => response.json())
+    .then(data => {
+      console.log('5-day', data.list)
+      for (var i = 0; i < 5; i++) {
+        console.log('first 5 days', data.list[i])
+        var fiveDayCard = document.createElement('div')
+        fiveDayCard.setAttribute('class', 'card')
+        fiveDayContainer.append(fiveDayCard)
+
+        var fiveDayTemp = document.createElement('h3')
+        fiveDayTemp.textContent = 'Temp: ' + data.list[i].main.temp + ' F'
+        fiveDayCard.prepend(fiveDayTemp)
+
+
+      }
+    })
+}
+
+// funtion to fetch uv index
+
+// function to get local storage and then for each item in local storage you want to create a button with an id of the city name and put an on click listener onto each button to get the current and 5day to display
+
+
 
 
 
