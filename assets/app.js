@@ -21,12 +21,14 @@ startBtn.on('click', function () {
   var city = $('.input-city').val()
   getWeather(city)
   getFiveDay(city)
-
+  getUvi(city,lat,lon);
 
   console.log(city);
 
   // save the searched city to local storage
 })
+
+
 
 //This function gets the current city weather data and appends it to the page
 
@@ -40,18 +42,20 @@ function getWeather(city) {
       $('#humidity').text("Humidity: " + data.main.humidity)
       $('#wind').text("Wind: " + data.wind.speed)
 
+      let lat = response.data.coord.lat;
+      let lon = response.data.coord.lon;
 
+    
 
-      getUvi(city,lat,lon);
-
-      /* function getUvi(city) {
-         fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon +'&exclude=' + city +'&appid=' + APIKey)
+       function getUvi(city) {
+         fetch('https://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + lat + '&lon=' + lon +'&exclude=' + city +'&appid=' + APIKey)
            .then((response) => response.json())
            .then(data => {
              console.log('current-uvi', data)
-           })
+            })
          }
-       })*/
+
+
     })
     .catch(err => alert('Wrong city name'))
 }
