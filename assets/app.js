@@ -21,21 +21,42 @@ startBtn.on('click', function () {
   var city = $('.input-city').val()
   getWeather(city)
   getFiveDay(city)
+
+
   console.log(city);
 
-// save the searched city to local storage
+  // save the searched city to local storage
 })
 
+//This function gets the current city weather data and appends it to the page
+
 function getWeather(city) {
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid='+ APIKey + '&units=imperial')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey + '&units=imperial')
     .then((response) => response.json())
     .then(data => {
       console.log('current-day', data)
-      $('#name').text("City: " + data.name)
-      // add the rest of data for current
+      $('#name').text("" + data.name)
+      $('#temp').text("Temp: " + data.main.temp)
+      $('#humidity').text("Humidity: " + data.main.humidity)
+      $('#wind').text("Wind: " + data.wind.speed)
+
+
+
+      getUvi(city,lat,lon);
+
+      /* function getUvi(city) {
+         fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon +'&exclude=' + city +'&appid=' + APIKey)
+           .then((response) => response.json())
+           .then(data => {
+             console.log('current-uvi', data)
+           })
+         }
+       })*/
     })
     .catch(err => alert('Wrong city name'))
 }
+
+//This function gets five day forcast data and appends it to page
 
 function getFiveDay(city) {
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey + '&units=imperial')
@@ -45,19 +66,42 @@ function getFiveDay(city) {
       for (var i = 0; i < 5; i++) {
         console.log('first 5 days', data.list[i])
         var fiveDayCard = document.createElement('div')
-        fiveDayCard.setAttribute('class', 'card')
+        fiveDayCard.setAttribute('class', 'card col bg-primary text-white mb-3')
         fiveDayContainer.append(fiveDayCard)
 
-        var fiveDayTemp = document.createElement('h3')
+        var fiveDayDate = document.createElement('p')
+        fiveDayDate.textContent = '' + data.list[i].dt_txt 
+        fiveDayCard.append(fiveDayDate)
+
+
+        var fiveDayTemp = document.createElement('p')
         fiveDayTemp.textContent = 'Temp: ' + data.list[i].main.temp + ' F'
-        fiveDayCard.prepend(fiveDayTemp)
+        fiveDayCard.append(fiveDayTemp)
+
+        var fiveDayHumidity = document.createElement('p')
+        fiveDayHumidity.textContent = 'Humidity: ' + data.list[i].main.humidity
+        fiveDayCard.append(fiveDayHumidity)
+
+        var fiveDayWind = document.createElement('p')
+        fiveDayWind .textContent = 'Wind: ' + data.list[i].wind.speed
+        fiveDayCard.append(fiveDayWind )
+
 
 
       }
     })
 }
 
-// funtion to fetch uv index
+function getUvi(city,lat,lon) {
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=' + city + '&appid=' + APIKey)
+    .then((response) => response.json())
+    .then(data => {
+      console.log('current-uvi', data)
+    })
+}
+
+
+
 
 // function to get local storage and then for each item in local storage you want to create a button with an id of the city name and put an on click listener onto each button to get the current and 5day to display
 

@@ -17,8 +17,8 @@
 		<h1 class="p-3 mb-2 bg-primary text-white d-flex  justify-content-center">Weather Dashboard</h1>
 	</header>
 
-	<main >
-		<aside >
+	<main class="container row">
+		<aside class ="col">
 			
 			<!--This is Search field section-->
 			<h2 class=“font-bold text-lg”>Search for a City</h2>
@@ -27,9 +27,11 @@
 				<button type="button" class="btn btn-primary block md search-btn" >Search</button>
 			</form>
 
+			
+
 			<!--This will be citys that pop up once submited -->
-			<div id=“searches”></div>
-			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Memphis</a>
+			<div id="searches"></div>
+			<a class=block mt-2 bg-gray-300 text-center rounded” href=“#”>Memphis</a>
 			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Nashville</a>
 			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Atlanta</a>
 			<a class=“block mt-2 bg-gray-300 text-center rounded” href=“#”>Chatanooga</a> 
@@ -37,31 +39,34 @@
 
 		<!-- elementtag#idname -->
 		<!-- elementtag.classname -->
-
-		<!--City display -->
-		<section class="container text-center">
-			<div class="m-2 text-xl">
-				<h3 id="name" class=“font-semibold”>City: </h3>
-				<p id="temp">Temp</p>
-				<p id='humidity'>Humidity: </p>
-				<p id="wind">Wind: </p>
-				<p id="uvIndex">Uv index: </p>
+		<section class="col-6">
+			<!--City display -->
+			<div class="mb-5 ml-4">
+				<section class="text-start border border-2">
+					<div class=" m-2 text-xl">
+						<h3 id="name" class=“font-semibold”>City: </h3>
+						<p id="temp">Temp</p>
+						<p id='humidity'>Humidity: </p>
+						<p id="wind">Wind: </p>
+						<p id="uvIndex">Uv index: </p>
+					</div>
+					<div class=>
+					</div>
+				</section>
 			</div>
-			<div class=>
+
+			<!--Five day forecast-->
+			<div class="row">
+				<section class="">
+					<div class="col">
+						<h3 >Five day Forcast</h3>
+					</div>
+					<div class="row  five-day-container">
+
+					</div>
+				</section>
 			</div>
 		</section>
-
-		<!--Five day forecast-->
-		<div class="container text-center">
-			<section class="row">
-				<div class="col align-self-end">
-					<h3>Five day Forcast</h3>
-				</div>
-				<div class="container five-day-container">
-
-				</div>
-			</section>
-		</div>
 	</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="assets/app.js"></script>
